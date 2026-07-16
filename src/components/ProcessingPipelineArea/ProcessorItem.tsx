@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { Processor } from "./ProcessorList";
+import type { Processor } from "../../models/processor.model";
 
 
 export function ProcessorItem({ processor }: { processor: Processor }) {
@@ -14,16 +14,16 @@ export function ProcessorItem({ processor }: { processor: Processor }) {
                 <span className={`transition-transform ${expanded ? 'rotate-90' : ''}`}>
                     ▶
                 </span>
-                <span>{processor.name}</span>
+                <span>{processor.displayName}</span>
 
 
             </button>
             {expanded && (
                 <div className="px-8 pb-2">
                     {processor.parameters.map((param) => (
-                        <div className="flex justify-between text-sm text-gray-900">
-                            <span>{param.name}</span>
-                            <span>{param.value}</span>
+                        <div key={param.displayName} className="flex justify-between text-sm text-gray-900">
+                            <span>{param.displayName}</span>
+                            <span>{param.type}</span>
                         </div>                        
                     ))}
                 </div>
