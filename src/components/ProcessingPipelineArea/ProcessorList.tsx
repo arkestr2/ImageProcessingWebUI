@@ -17,12 +17,10 @@ export type Parameter = {
 
 export function ProcessorList({ className, processors }: Props) {
     return (
-        <div className={`bg-amber-700 p-8 pb-16 ${className ?? ""}`}>
-                <div className="overflow-y-auto lg:max-h-150">
-                    {processors.map((p) => (
-                        <ProcessorItem key={p.name} processor={p} />
-                    ))}
-                </div>
+        <div className={`overflow-y-auto lg:max-h-160 ${className ?? ""}`}>
+            {processors.map((p) => (
+                <ProcessorItem key={p.name} processor={p} />
+            ))}
         </div>
     )
 }

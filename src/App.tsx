@@ -1,14 +1,13 @@
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { ImageArea } from "./components/ImageArea";
-import { ProcessorList } from "./components/ProcessorList";
+import { ProcessingPipeline } from "./components/ProcessingPipelineArea/ProcessingPipeline";
 
 export function App() {
     return (
         <>
             <div className="w-screen h-screen flex flex-col items-center">
                 <Header className="min-h-15 w-full"/>
-
                 <div className="
                         flex-1 
                         grid
@@ -22,172 +21,8 @@ export function App() {
                         w-full
                         max-w-5xl"
                     > 
-                    <ImageArea className="" />
-                    <ProcessorList
-                        className=""
-                        processors={[
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                            {
-                                name: "placeholder_processor",
-                                parameters: [{name: "placeholder_parameter", value: "placeholder_value"}],
-                            },
-                        ]}
-                    />
+                    <ImageArea/>
+                    <ProcessingPipeline></ProcessingPipeline>
                     <Footer className="lg:col-span-2 justify-end"/>
                 </div>
             </div>
