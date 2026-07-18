@@ -30,6 +30,10 @@ export function AddProcessorModal({ isOpen, onClose, onSubmit }: Props) {
         onClose()
     }
 
+    const handleProcessorSelect = (processor: Processor) => {
+        setSelectedProcessor(processor === selectedProcessor ? null : processor)
+    }
+
     if (!isOpen) return null
 
     return (
@@ -45,7 +49,7 @@ export function AddProcessorModal({ isOpen, onClose, onSubmit }: Props) {
                             {availableProcessors.map((processor) => (
                                 <li key={processor.displayName}>
                                     <button
-                                        onClick={() => setSelectedProcessor(processor)}
+                                        onClick={() => handleProcessorSelect(processor)}
                                         className={`w-full text-left px-4 py-2 rounded ${
                                             selectedProcessor?.displayName === processor.displayName
                                                 ? "bg-primary text-text "
