@@ -11,10 +11,10 @@ export function ProcessorItem({ processor, onDeleteClick }: Props) {
 
     return (
         <div className="flex gap-2">
-            <div className="w-full bg-surface-secondary rounded mb-2">
+            <div className="w-full bg-surface-secondary hover:bg-surface-secondary-hover rounded mb-2">
                 <button
                     onClick={() => setExpanded(!expanded)}
-                    className="w-full flex items-center gap-2 px-4 py-2 hover:bg-surface-secondary-hover"
+                    className="w-full flex items-center gap-2 px-4 py-2"
                 >
                     <span className={`transition-transform ${expanded ? 'rotate-90' : ''}`}>
                         ▶
@@ -32,7 +32,7 @@ export function ProcessorItem({ processor, onDeleteClick }: Props) {
                     </div>
                 )}
             </div>
-            <div className="bg-danger max-h-fit has-[:hover]:bg-danger-hover rounded mb-2 text-text">
+            <div className="bg-danger max-h-fit hover:bg-danger-hover rounded mb-2 text-text">
                 <button
                 className="w-full items-center px-4 py-2"
                 onClick={() => onDeleteClick(processor.id)}
