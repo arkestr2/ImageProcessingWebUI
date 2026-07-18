@@ -18,17 +18,19 @@ export function ProcessingPipeline({ className }: Props) {
     }
 
     return (
-        <div className={`bg-amber-700 ${className ?? ""}`}>
+        <div className={`border-2 border-border h-full lg:max-h-180 ${className ?? ""}`}>
             <ProcessingPipelineHeader onAddClick={() => setIsModalOpen(true)} />
-            <ProcessorList
-                className=""
-                processors={processors}
-            />
-            <AddProcessorModal
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-                onSubmit={handleAddProcessor}
-            />
+            <div className="">
+                <ProcessorList
+                    className="m-4"
+                    processors={processors}
+                />
+                <AddProcessorModal
+                    isOpen={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                    onSubmit={handleAddProcessor}
+                />
+            </div>
         </div>
     )
 }

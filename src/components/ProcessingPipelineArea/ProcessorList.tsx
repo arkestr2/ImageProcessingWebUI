@@ -8,7 +8,7 @@ type Props = {
 
 export function ProcessorList({ className, processors }: Props) {
     return (
-        <div className={`overflow-y-auto lg:max-h-160 ${className ?? ""}`}>
+        <div className={`overflow-y-auto lg:max-h-150 ${className ?? ""}`}>
             {processors.map((p) => (
                 <ProcessorItem key={p.displayName} processor={p} />
             ))}

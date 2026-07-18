@@ -6,7 +6,7 @@ import { ProcessingPipeline } from "./components/ProcessingPipelineArea/Processi
 export function App() {
     return (
         <>
-            <div className="w-screen h-screen flex flex-col items-center">
+            <div className="w-screen h-screen flex flex-col items-center bg-bg">
                 <Header className="min-h-15 w-full"/>
                 <div className="
                         flex-1 
@@ -19,7 +19,9 @@ export function App() {
                         px-8
                         lg:px-0
                         w-full
-                        max-w-5xl"
+                        max-w-5xl
+                        bg-bg
+                    "
                     > 
                     <ImageArea/>
                     <ProcessingPipeline></ProcessingPipeline>

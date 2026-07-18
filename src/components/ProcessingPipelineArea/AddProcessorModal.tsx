@@ -34,12 +34,12 @@ export function AddProcessorModal({ isOpen, onClose, onSubmit }: Props) {
 
     return (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
-            <div className="bg-white rounded-lg p-6 w-64 lg:w-96 max-h-96 flex flex-col">
-                <h2 className="text-lg font-bold mb-4">Add Processor</h2>
+            <div className="bg-bg rounded-lg p-6 w-64 lg:w-96 max-h-96 flex flex-col">
+                <h2 className="text-lg font-bold mb-4 text-text-secondary">Add Processor</h2>
 
-                <div className="flex-1 overflow-y-auto mb-4">
+                <div className="flex-1 overflow-y-auto mb-2">
                     {availableProcessors.length === 0 ? (
-                        <p className="text-gray-500">Loading processors...</p>
+                        <p className="text-text-muted">Loading processors...</p>
                     ) : (
                         <ul className="space-y-2">
                             {availableProcessors.map((processor) => (
@@ -48,8 +48,8 @@ export function AddProcessorModal({ isOpen, onClose, onSubmit }: Props) {
                                         onClick={() => setSelectedProcessor(processor)}
                                         className={`w-full text-left px-4 py-2 rounded ${
                                             selectedProcessor?.displayName === processor.displayName
-                                                ? "bg-blue-500 text-white"
-                                                : "bg-gray-100 hover:bg-gray-200"
+                                                ? "bg-primary text-text "
+                                                : "bg-bg hover:bg-surface-secondary text-text-secondary hover:text-text"
                                         }`}
                                     >
                                         {processor.displayName}
@@ -63,14 +63,14 @@ export function AddProcessorModal({ isOpen, onClose, onSubmit }: Props) {
                 <div className="flex gap-2 justify-end">
                     <button
                         onClick={handleClose}
-                        className="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300"
+                        className="px-4 py-2 rounded border-2 border-danger hover:bg-secondary-hover text-text=secondary"
                     >
                         Cancel
                     </button>
                     <button
                         onClick={handleSubmit}
                         disabled={!selectedProcessor}
-                        className="px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="px-4 py-2 rounded bg-primary text-text hover:bg-primary-hover disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         Submit
                     </button>
