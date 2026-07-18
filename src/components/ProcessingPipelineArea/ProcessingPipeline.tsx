@@ -13,8 +13,12 @@ export function ProcessingPipeline({ className }: Props) {
     const [processors, setProcessors] = useState<Processor[]>([])
 
     const handleAddProcessor = (processor: Processor) => {
-        setProcessors([...processors, processor])
+        setProcessors([...processors, { ...processor, id: crypto.randomUUID() }])
         setIsModalOpen(false)
+    }
+
+    const handleDeleteProcessor = (id?: string) => {
+        setProcessors(processors.filter(p => p.id !== id))
     }
 
     return (
@@ -24,6 +28,7 @@ export function ProcessingPipeline({ className }: Props) {
                 <ProcessorList
                     className="m-4"
                     processors={processors}
+                    onDeleteClick={handleDeleteProcessor}
                 />
                 <AddProcessorModal
                     isOpen={isModalOpen}
