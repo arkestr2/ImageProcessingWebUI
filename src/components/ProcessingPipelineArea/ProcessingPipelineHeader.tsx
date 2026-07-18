@@ -12,7 +12,7 @@ export function ProcessingPipelineHeader({ className, onAddClick }: Props) {
                     onClick={onAddClick}
                     className="w-fit h-8 rounded bg-secondary hover:bg-secondary-hover flex items-center justify-center text-surface px-4"
                 >
-                    +
+                    Add Processor
                 </button>
             </div>
         </div>
