@@ -1,10 +1,10 @@
 import { useState } from "react";
-import type { Processor } from "../../models/processor.model";
+import type { ProcessorInstance } from "../../models/processor-instance.model";
 import { ParameterItem } from "./ParameterItem"
 import { usePipelineContext } from "./pipeline.context";
 
 type Props = {
-    processor: Processor
+    processor: ProcessorInstance
 }
 
 export function ProcessorItem({ processor }: Props) {
@@ -29,9 +29,9 @@ export function ProcessorItem({ processor }: Props) {
                             <ParameterItem 
                                 key={param.displayName}
                                 parameter={param}
-                                value={processor.id ? (parameterValues[processor.id]?.[param.displayName] ?? "") : ""}
+                                value={ parameterValues[processor.id][param.displayName] }
                                 onValueChange={(value) => 
-                                    onUpdateParameterValue(processor.id!, param.displayName, value)
+                                    onUpdateParameterValue(processor.id, param.displayName, value)
                                 }
                             />                        
                         ))}

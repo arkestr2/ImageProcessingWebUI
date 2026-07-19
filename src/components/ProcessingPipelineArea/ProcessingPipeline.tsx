@@ -2,7 +2,8 @@ import { useState } from "react"
 import { ProcessingPipelineHeader } from "./ProcessingPipelineHeader"
 import { ProcessorList } from "./ProcessorList"
 import { AddProcessorModal } from "./AddProcessorModal"
-import type { Processor } from "../../models/processor.model"
+import type { ProcessorTemplate } from "../../models/processor-template.model"
+import type { ProcessorInstance } from "../../models/processor-instance.model"
 import { PipelineContext } from "./pipeline.context"
 
 type Props = {
@@ -11,10 +12,10 @@ type Props = {
 
 export function ProcessingPipeline({ className }: Props) {
     const [isModalOpen, setIsModalOpen] = useState(false)
-    const [processors, setProcessors] = useState<Processor[]>([])
+    const [processors, setProcessors] = useState<ProcessorInstance[]>([])
     const [parameterValues, setParameterValues] = useState<Record<string, Record<string, string>>>({})
 
-    const handleAddProcessor = (processor: Processor) => {
+    const handleAddProcessor = (processor: ProcessorTemplate) => {
         const id = crypto.randomUUID()
         setProcessors([...processors, { ...processor, id }])
 

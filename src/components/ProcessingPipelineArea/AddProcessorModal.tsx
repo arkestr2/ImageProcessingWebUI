@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react"
-import type { Processor } from "../../models/processor.model"
+import type { ProcessorTemplate } from "../../models/processor-template.model"
 import { getProcessors } from "../../services/processor.service"
 
 type Props = {
     isOpen: boolean
     onClose: () => void
-    onSubmit: (processor: Processor) => void
+    onSubmit: (processor: ProcessorTemplate) => void
 }
 
 export function AddProcessorModal({ isOpen, onClose, onSubmit }: Props) {
-    const [availableProcessors, setAvailableProcessors] = useState<Processor[]>([])
-    const [selectedProcessor, setSelectedProcessor] = useState<Processor | null>(null)
+    const [availableProcessors, setAvailableProcessors] = useState<ProcessorTemplate[]>([])
+    const [selectedProcessor, setSelectedProcessor] = useState<ProcessorTemplate | null>(null)
 
     useEffect(() => {
         if (!isOpen) return
@@ -30,7 +30,7 @@ export function AddProcessorModal({ isOpen, onClose, onSubmit }: Props) {
         onClose()
     }
 
-    const handleProcessorSelect = (processor: Processor) => {
+    const handleProcessorSelect = (processor: ProcessorTemplate) => {
         setSelectedProcessor(processor === selectedProcessor ? null : processor)
     }
 

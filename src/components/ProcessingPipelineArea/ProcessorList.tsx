@@ -1,8 +1,8 @@
 import { ProcessorItem } from "./ProcessorItem"
-import type { Processor } from "../../models/processor.model"
+import type { ProcessorInstance } from "../../models/processor-instance.model"
 
 type Props = {
-    processors: Processor[],
+    processors: ProcessorInstance[],
     className?: string
 }
 
