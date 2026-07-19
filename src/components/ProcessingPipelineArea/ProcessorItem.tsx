@@ -1,13 +1,14 @@
 import { useState } from "react";
 import type { Processor } from "../../models/processor.model";
+import { usePipelineContext } from "./pipeline.context";
 
 type Props = {
-    processor: Processor,
-    onDeleteClick: (id?: string) => void;
+    processor: Processor
 }
 
-export function ProcessorItem({ processor, onDeleteClick }: Props) {
+export function ProcessorItem({ processor }: Props) {
     const [expanded, setExpanded] = useState(false)
+    const { onDeleteProcessor } = usePipelineContext()
 
     return (
         <div className="flex gap-2">
@@ -35,7 +36,7 @@ export function ProcessorItem({ processor, onDeleteClick }: Props) {
             <div className="bg-danger max-h-fit hover:bg-danger-hover rounded mb-2 text-text">
                 <button
                 className="w-full items-center px-4 py-2"
-                onClick={() => onDeleteClick(processor.id)}
+                onClick={() => onDeleteProcessor(processor.id)}
             >
                 Delete
             </button>
