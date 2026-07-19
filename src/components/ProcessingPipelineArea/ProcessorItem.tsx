@@ -12,10 +12,10 @@ export function ProcessorItem({ processor }: Props) {
 
     return (
         <div className="flex gap-2">
-            <div className="w-full bg-surface-secondary hover:bg-surface-secondary-hover rounded mb-2">
+            <div className="w-full bg-surface-secondary rounded mb-2">
                 <button
                     onClick={() => setExpanded(!expanded)}
-                    className="w-full flex items-center gap-2 px-4 py-2"
+                    className="w-full hover:bg-surface-secondary-hover rounded flex items-center gap-2 px-4 py-2"
                 >
                     <span className={`transition-transform ${expanded ? 'rotate-90' : ''}`}>
                         ▶
