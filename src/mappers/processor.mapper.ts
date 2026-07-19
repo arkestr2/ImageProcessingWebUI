@@ -1,7 +1,7 @@
 import type { ProcessorDto } from "../dto/processor.dto"
-import type { ProcessorParameterDto } from "../dto/processor.parameter.dto"
+import type { ProcessorParameterDto } from "../dto/processor-parameter.dto"
 import type { ProcessorTemplate } from "../models/processor-template.model"
-import type { ProcessorParameter } from "../models/processor.parameter.model"
+import type { ProcessorParameter } from "../models/processor-parameter.model"
 
 export function mapProcessorDtoToModel(dto: ProcessorDto): ProcessorTemplate {
   return {

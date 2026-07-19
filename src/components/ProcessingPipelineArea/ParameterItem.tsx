@@ -1,4 +1,4 @@
-import type { ProcessorParameter } from "../../models/processor.parameter.model"
+import type { ProcessorParameter } from "../../models/processor-parameter.model"
 
 type Props = {
     parameter: ProcessorParameter
