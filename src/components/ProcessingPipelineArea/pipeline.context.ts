@@ -2,6 +2,8 @@ import { createContext, use } from "react"
 
 type PipelineContextType = {
     onDeleteProcessor: (id?: string) => void
+    onUpdateParameterValue: (processorId: string, paramName: string, value: string) => void
+    parameterValues: Record<string, Record<string, string>>
 }
 
 export const PipelineContext = createContext<PipelineContextType | null>(null)

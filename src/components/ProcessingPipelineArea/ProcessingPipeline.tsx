@@ -12,9 +12,18 @@ type Props = {
 export function ProcessingPipeline({ className }: Props) {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [processors, setProcessors] = useState<Processor[]>([])
+    const [parameterValues, setParameterValues] = useState<Record<string, Record<string, string>>>({})
 
     const handleAddProcessor = (processor: Processor) => {
-        setProcessors([...processors, { ...processor, id: crypto.randomUUID() }])
+        const id = crypto.randomUUID()
+        setProcessors([...processors, { ...processor, id }])
+
+        const defaultValues: Record<string, string> = {}
+        processor.parameters.forEach(param => {
+            defaultValues[param.displayName] = param.defaultValue
+        })
+        setParameterValues(prev => ({ ...prev, [id]: defaultValues }))
+        
         setIsModalOpen(false)
     }
 
@@ -22,9 +31,21 @@ export function ProcessingPipeline({ className }: Props) {
         setProcessors(processors.filter(p => p.id !== id))
     }
 
+    const handleUpdateParameterValue = (processorId: string, paramName: string, value: string) => {
+        setParameterValues(prev => ({
+            ...prev,
+            [processorId]: {
+                ...prev[processorId],
+                [paramName]: value
+            }
+        }))
+    }
+
     return (
         <PipelineContext value={{
-            onDeleteProcessor: handleDeleteProcessor
+            onDeleteProcessor: handleDeleteProcessor,
+            onUpdateParameterValue: handleUpdateParameterValue,
+            parameterValues: parameterValues
         }}>
             <div className={`border-2 border-border h-full lg:max-h-180 ${className ?? ""}`}>
                 <ProcessingPipelineHeader onAddClick={() => setIsModalOpen(true)} />

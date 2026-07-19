@@ -15,6 +15,7 @@ function mapProcessorParametersDtoToModel(dto: ProcessorParameterDto): Processor
   return {
       displayName: dto.display_name,
       type: dto.type,
-      required: dto.required
+      required: dto.required,
+      defaultValue: dto.default_value
   }
 }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { Processor } from "../../models/processor.model";
+import { ParameterItem } from "./ParameterItem"
 import { usePipelineContext } from "./pipeline.context";
 
 type Props = {
@@ -8,7 +9,7 @@ type Props = {
 
 export function ProcessorItem({ processor }: Props) {
     const [expanded, setExpanded] = useState(false)
-    const { onDeleteProcessor } = usePipelineContext()
+    const { onDeleteProcessor, onUpdateParameterValue, parameterValues } = usePipelineContext()
 
     return (
         <div className="flex gap-2">
@@ -25,10 +26,14 @@ export function ProcessorItem({ processor }: Props) {
                 {expanded && (
                     <div className="px-8 pb-2">
                         {processor.parameters.map((param) => (
-                            <div key={param.displayName} className="flex justify-between text-sm text-text-secondary">
-                                <span>{param.displayName}</span>
-                                <span>{param.type}</span>
-                            </div>                        
+                            <ParameterItem 
+                                key={param.displayName}
+                                parameter={param}
+                                value={processor.id ? (parameterValues[processor.id]?.[param.displayName] ?? "") : ""}
+                                onValueChange={(value) => 
+                                    onUpdateParameterValue(processor.id!, param.displayName, value)
+                                }
+                            />                        
                         ))}
                     </div>
                 )}
