@@ -7,12 +7,13 @@ import type { ProcessorInstance } from "../../models/processor-instance.model"
 import { PipelineContext } from "./pipeline.context"
 
 type Props = {
+    processors: ProcessorInstance[],
+    setProcessors: React.Dispatch<React.SetStateAction<ProcessorInstance[]>>,
     className?: string
 }
 
-export function ProcessingPipeline({ className }: Props) {
+export function ProcessingPipeline({ processors, setProcessors, className }: Props) {
     const [isModalOpen, setIsModalOpen] = useState(false)
-    const [processors, setProcessors] = useState<ProcessorInstance[]>([])
     const [parameterValues, setParameterValues] = useState<Record<string, Record<string, string>>>({})
 
     const handleAddProcessor = (processor: ProcessorTemplate) => {

@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { ImageArea } from "./components/ImageArea";
 import { ProcessingPipeline } from "./components/ProcessingPipelineArea/ProcessingPipeline";
+import type { ProcessorInstance } from "./models/processor-instance.model";
 
 export function App() {
+    const [processors, setProcessors] = useState<ProcessorInstance[]>([])
+
     return (
         <>
             <div className="w-screen h-screen flex flex-col items-center bg-bg">
@@ -24,8 +28,8 @@ export function App() {
                     "
                     > 
                     <ImageArea/>
-                    <ProcessingPipeline></ProcessingPipeline>
-                    <Footer className="lg:col-span-2 justify-end"/>
+                    <ProcessingPipeline processors={processors} setProcessors={setProcessors} ></ProcessingPipeline>
+                    <Footer processors={processors}  className="lg:col-span-2 justify-end"/>
                 </div>
             </div>
         </>
