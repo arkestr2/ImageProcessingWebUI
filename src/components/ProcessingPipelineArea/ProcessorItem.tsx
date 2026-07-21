@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { ProcessorInstance } from "../../models/processor-instance.model";
 import { ParameterItem } from "./ParameterItem"
-import { usePipelineContext } from "./pipeline.context";
+import { usePipelineContext } from "../../contexts/pipeline.context";
 
 type Props = {
     processor: ProcessorInstance

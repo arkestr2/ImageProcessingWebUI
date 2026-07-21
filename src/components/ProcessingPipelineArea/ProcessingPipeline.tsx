@@ -4,7 +4,7 @@ import { ProcessorList } from "./ProcessorList"
 import { AddProcessorModal } from "./AddProcessorModal"
 import type { ProcessorTemplate } from "../../models/processor-template.model"
 import type { ProcessorInstance } from "../../models/processor-instance.model"
-import { PipelineContext } from "./pipeline.context"
+import { PipelineContext } from "../../contexts/pipeline.context"
 
 type Props = {
     processors: ProcessorInstance[],
