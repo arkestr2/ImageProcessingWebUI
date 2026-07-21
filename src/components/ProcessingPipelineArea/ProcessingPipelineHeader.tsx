@@ -16,5 +16,5 @@ export function ProcessingPipelineHeader({ className, onAddClick }: Props) {
                 </button>
             </div>
         </div>
-    )
+    );
 }

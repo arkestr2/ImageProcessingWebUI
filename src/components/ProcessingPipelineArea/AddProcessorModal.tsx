@@ -1,40 +1,40 @@
-import { useState, useEffect } from "react"
-import type { ProcessorTemplate } from "../../models/processor-template.model"
-import { getProcessors } from "../../services/processor.service"
+import { useState, useEffect } from "react";
+import type { ProcessorTemplate } from "../../models/processor-template.model";
+import { getProcessors } from "../../services/processor.service";
 
 type Props = {
-    isOpen: boolean
-    onClose: () => void
-    onSubmit: (processor: ProcessorTemplate) => void
-}
+    isOpen: boolean;
+    onClose: () => void;
+    onSubmit: (processor: ProcessorTemplate) => void;
+};
 
 export function AddProcessorModal({ isOpen, onClose, onSubmit }: Props) {
-    const [availableProcessors, setAvailableProcessors] = useState<ProcessorTemplate[]>([])
-    const [selectedProcessor, setSelectedProcessor] = useState<ProcessorTemplate | null>(null)
+    const [availableProcessors, setAvailableProcessors] = useState<ProcessorTemplate[]>([]);
+    const [selectedProcessor, setSelectedProcessor] = useState<ProcessorTemplate | null>(null);
 
     useEffect(() => {
-        if (!isOpen) return
+        if (!isOpen) return;
 
-        getProcessors().then(setAvailableProcessors)
-    }, [isOpen])
+        getProcessors().then(setAvailableProcessors);
+    }, [isOpen]);
 
     const handleSubmit = () => {
         if (selectedProcessor) {
-            onSubmit(selectedProcessor)
-            setSelectedProcessor(null)
+            onSubmit(selectedProcessor);
+            setSelectedProcessor(null);
         }
-    }
+    };
 
     const handleClose = () => {
-        setSelectedProcessor(null)
-        onClose()
-    }
+        setSelectedProcessor(null);
+        onClose();
+    };
 
     const handleProcessorSelect = (processor: ProcessorTemplate) => {
-        setSelectedProcessor(processor === selectedProcessor ? null : processor)
-    }
+        setSelectedProcessor(processor === selectedProcessor ? null : processor);
+    };
 
-    if (!isOpen) return null
+    if (!isOpen) return null;
 
     return (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
@@ -65,10 +65,7 @@ export function AddProcessorModal({ isOpen, onClose, onSubmit }: Props) {
                 </div>
 
                 <div className="flex gap-2 justify-end">
-                    <button
-                        onClick={handleClose}
-                        className="px-4 py-2 rounded border-2 border-danger hover:bg-secondary-hover text-text=secondary"
-                    >
+                    <button onClick={handleClose} className="px-4 py-2 rounded border-2 border-danger hover:bg-secondary-hover text-text=secondary">
                         Cancel
                     </button>
                     <button
@@ -81,5 +78,5 @@ export function AddProcessorModal({ isOpen, onClose, onSubmit }: Props) {
                 </div>
             </div>
         </div>
-    )
+    );
 }

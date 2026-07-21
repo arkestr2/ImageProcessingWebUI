@@ -12,8 +12,9 @@ export function App() {
     return (
         <>
             <div className="w-screen h-screen flex flex-col items-center bg-bg">
-                <Header className="min-h-15 w-full"/>
-                <div className="
+                <Header className="min-h-15 w-full" />
+                <div
+                    className="
                         flex-1
                         grid
                         grid-cols-1
@@ -27,10 +28,10 @@ export function App() {
                         max-w-5xl
                         bg-bg
                     "
-                    >
+                >
                     <ImageArea imageId={imageId} onImageUpload={setImageId} />
                     <ProcessingPipeline processors={processors} setProcessors={setProcessors} />
-                    <Footer processors={processors} className="lg:col-span-2 justify-end"/>
+                    <Footer processors={processors} className="lg:col-span-2 justify-end" />
                 </div>
             </div>
         </>

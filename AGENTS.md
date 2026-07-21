@@ -54,6 +54,11 @@ API response (DTO)  →  service  →  mapper  →  model  →  component
 
 `src/api/client.ts` — thin wrapper around `fetch`. Env var `VITE_API_BASE_URL` from `.env` (gitignored, defaults to `http://localhost:8000`).
 
+## Formatting
+
+- Prettier for code formatting
+- Semicolons required
+
 ## Linting
 
 ESLint, not Oxlint. Rules are in `eslint.config.js`. Do not create `.eslintrc` or add ESLint dependencies.

@@ -40,11 +40,7 @@ export function ImageArea({ className, imageId, onImageUpload }: Props) {
             <div className="w-full aspect-video bg-surface-secondary hover:bg-surface-secondary-hover flex items-center justify-center">
                 <div {...getRootProps()} className="h-full w-full flex items-center justify-center">
                     <input {...getInputProps()} />
-                    {preview ? (
-                        <img src={preview} alt="Preview" />
-                    ) : (
-                        <p>Drag & drop or click to select an input image</p>
-                    )}
+                    {preview ? <img src={preview} alt="Preview" /> : <p>Drag & drop or click to select an input image</p>}
                 </div>
             </div>
             <div className="w-full aspect-video bg-surface-secondary flex items-center justify-center">

@@ -1,7 +1,7 @@
 import type { ProcessorInstance } from "../models/processor-instance.model";
 
 type Props = {
-    processors: ProcessorInstance[],
+    processors: ProcessorInstance[];
     className?: string;
 };
 

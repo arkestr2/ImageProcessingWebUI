@@ -1,7 +1,7 @@
-import type { ProcessorParameterDto } from "./processor-parameter.dto"
+import type { ProcessorParameterDto } from "./processor-parameter.dto";
 
 export type ProcessorDto = {
-  display_name: string
-  type: string
-  parameters: ProcessorParameterDto[]
-}
+    display_name: string;
+    type: string;
+    parameters: ProcessorParameterDto[];
+};
