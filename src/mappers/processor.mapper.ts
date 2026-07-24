@@ -5,6 +5,7 @@ import type { ProcessorParameter } from "../models/processor-parameter.model";
 
 export function mapProcessorDtoToModel(dto: ProcessorDto): ProcessorTemplate {
     return {
+        semanticId: dto.processor_id,
         displayName: dto.display_name,
         type: dto.type,
         parameters: dto.parameters.map(mapProcessorParametersDtoToModel),
