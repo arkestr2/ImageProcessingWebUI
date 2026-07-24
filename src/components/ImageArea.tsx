@@ -6,9 +6,10 @@ type Props = {
     className?: string;
     imageId: string | null;
     onImageUpload: (id: string) => void;
+    resultImageUrl: string | null;
 };
 
-export function ImageArea({ className, imageId, onImageUpload }: Props) {
+export function ImageArea({ className, imageId, onImageUpload, resultImageUrl }: Props) {
     const [preview, setPreview] = useState<string>();
     const [isUploading, setIsUploading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -44,7 +45,9 @@ export function ImageArea({ className, imageId, onImageUpload }: Props) {
                 </div>
             </div>
             <div className="w-full aspect-video bg-surface-secondary flex items-center justify-center">
-                {isUploading ? (
+                {resultImageUrl ? (
+                    <img src={resultImageUrl} alt="Processed" className="max-h-full" />
+                ) : isUploading ? (
                     <p>Uploading...</p>
                 ) : error ? (
                     <p className="text-danger">{error}</p>

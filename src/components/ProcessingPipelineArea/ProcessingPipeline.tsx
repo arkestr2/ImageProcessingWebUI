@@ -9,12 +9,13 @@ import { PipelineContext } from "../../contexts/pipeline.context";
 type Props = {
     processors: ProcessorInstance[];
     setProcessors: React.Dispatch<React.SetStateAction<ProcessorInstance[]>>;
+    parameterValues: Record<string, Record<string, string>>;
+    setParameterValues: React.Dispatch<React.SetStateAction<Record<string, Record<string, string>>>>;
     className?: string;
 };
 
-export function ProcessingPipeline({ processors, setProcessors, className }: Props) {
+export function ProcessingPipeline({ processors, setProcessors, parameterValues, setParameterValues, className }: Props) {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [parameterValues, setParameterValues] = useState<Record<string, Record<string, string>>>({});
 
     const handleAddProcessor = (processor: ProcessorTemplate) => {
         const id = crypto.randomUUID();
