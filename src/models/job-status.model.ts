@@ -2,6 +2,6 @@ export type JobStatus = {
     jobId: string;
     status: "queued" | "processing" | "done";
     startedAt: Date;
-    resultImageUrl?: string;
+    resultImageId?: string;
     finishedAt?: Date;
 };

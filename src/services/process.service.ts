@@ -15,7 +15,7 @@ export async function submitJob(imageId: string, processors: ProcessorInstance[]
 const POLL_INTERVAL_MS = 1000;
 const MAX_POLL_ATTEMPTS = 10;
 
-export function pollJobStatus(jobId: string, onDone: (resultImageUrl: string) => void, onError: (err: Error) => void): () => void {
+export function pollJobStatus(jobId: string, onDone: (resultImageId: string) => void, onError: (err: Error) => void): () => void {
     let stopped = false;
     let attempts = 0;
 
@@ -30,8 +30,8 @@ export function pollJobStatus(jobId: string, onDone: (resultImageUrl: string) =>
             const dto = await apiClient.get<JobStatusDto>(`/process/jobs/${jobId}`);
             const job = mapJobStatusDtoToModel(dto);
 
-            if (job.status === "done" && job.resultImageUrl) {
-                onDone(job.resultImageUrl);
+            if (job.status === "done" && job.resultImageId) {
+                onDone(job.resultImageId);
             } else if (job.status === "queued" || job.status === "processing") {
                 setTimeout(poll, POLL_INTERVAL_MS);
             }

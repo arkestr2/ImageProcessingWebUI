@@ -10,3 +10,8 @@ export async function uploadImage(file: File): Promise<string> {
     const response = mapUploadResponseDtoToModel(dto);
     return response.imageId;
 }
+
+export async function downloadImage(imageId: string): Promise<string> {
+    const blob = await apiClient.get<Blob>(`/download/${imageId}`, { response: "blob" });
+    return URL.createObjectURL(blob);
+}

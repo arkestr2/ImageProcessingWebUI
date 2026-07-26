@@ -9,7 +9,7 @@ import { submitJob, pollJobStatus } from "./services/process.service";
 export function App() {
     const [processors, setProcessors] = useState<ProcessorInstance[]>([]);
     const [imageId, setImageId] = useState<string | null>(null);
-    const [resultImageUrl, setResultImageUrl] = useState<string | null>(null);
+    const [resultImageId, setResultImageId] = useState<string | null>(null);
     const [isProcessing, setIsProcessing] = useState(false);
     const [parameterValues, setParameterValues] = useState<Record<string, Record<string, string>>>({});
 
@@ -23,15 +23,15 @@ export function App() {
         if (!imageId || processorsRef.current.length === 0) return;
 
         setIsProcessing(true);
-        setResultImageUrl(null);
+        setResultImageId(null);
 
         try {
             const jobId = await submitJob(imageId, processorsRef.current, parameterValuesRef.current);
 
             pollJobStatus(
                 jobId,
-                (url) => {
-                    setResultImageUrl(url);
+                (id) => {
+                    setResultImageId(id);
                     setIsProcessing(false);
                 },
                 (err) => {
@@ -64,7 +64,7 @@ export function App() {
                     bg-bg
                 "
             >
-                <ImageArea imageId={imageId} onImageUpload={setImageId} resultImageUrl={resultImageUrl} />
+                <ImageArea imageId={imageId} onImageUpload={setImageId} resultImageId={resultImageId} />
                 <ProcessingPipeline
                     processors={processors}
                     setProcessors={setProcessors}

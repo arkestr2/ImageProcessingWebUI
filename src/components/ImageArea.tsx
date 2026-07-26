@@ -1,18 +1,35 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import { uploadImage } from "../services/image.service";
+import { uploadImage, downloadImage } from "../services/image.service";
 
 type Props = {
     className?: string;
     imageId: string | null;
     onImageUpload: (id: string) => void;
-    resultImageUrl: string | null;
+    resultImageId: string | null;
 };
 
-export function ImageArea({ className, imageId, onImageUpload, resultImageUrl }: Props) {
+export function ImageArea({ className, imageId, onImageUpload, resultImageId }: Props) {
     const [preview, setPreview] = useState<string>();
+    const [resultPreview, setResultPreview] = useState<string | null>(null);
     const [isUploading, setIsUploading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const resultPreviewRef = useRef<string | null>(null);
+
+    useEffect(() => {
+        if (!resultImageId) return;
+
+        downloadImage(resultImageId).then((url) => {
+            resultPreviewRef.current = url;
+            setResultPreview(url);
+        });
+
+        return () => {
+            if (resultPreviewRef.current) {
+                URL.revokeObjectURL(resultPreviewRef.current);
+            }
+        };
+    }, [resultImageId]);
 
     const { getRootProps, getInputProps } = useDropzone({
         onDrop: async (acceptedFiles) => {
@@ -45,8 +62,8 @@ export function ImageArea({ className, imageId, onImageUpload, resultImageUrl }:
                 </div>
             </div>
             <div className="w-full aspect-video bg-surface-secondary flex items-center justify-center">
-                {resultImageUrl ? (
-                    <img src={resultImageUrl} alt="Processed" className="max-h-full" />
+                {resultPreview ? (
+                    <img src={resultPreview} alt="Processed" className="max-h-full" />
                 ) : isUploading ? (
                     <p>Uploading...</p>
                 ) : error ? (

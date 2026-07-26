@@ -13,7 +13,7 @@ export type JobProcessingDto = {
 export type JobDoneDto = {
     job_id: string;
     status: "done";
-    result_image_url: string;
+    result_image_id: string;
     started_at: string;
     finished_at: string;
 };
