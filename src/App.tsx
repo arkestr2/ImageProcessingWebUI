@@ -72,6 +72,7 @@ export function App() {
                     setParameterValues={setParameterValues}
                 />
                 <Footer
+                    processors={processors}
                     imageId={imageId}
                     onProcess={onProcess}
                     isProcessing={isProcessing}

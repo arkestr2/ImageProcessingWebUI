@@ -1,12 +1,15 @@
+import type { ProcessorInstance } from "../models/processor-instance.model";
+
 type Props = {
+    processors: ProcessorInstance[];
     imageId: string | null;
     onProcess: () => Promise<void>;
     isProcessing: boolean;
     className?: string;
 };
 
-export function Footer({ imageId, onProcess, isProcessing, className }: Props) {
-    const disabled = !imageId || isProcessing;
+export function Footer({ processors, imageId, onProcess, isProcessing, className }: Props) {
+    const disabled = !imageId || isProcessing || !processors.length;
 
     return (
         <div className={`flex flex-row ${className ?? ""}`}>
