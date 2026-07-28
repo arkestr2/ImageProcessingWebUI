@@ -44,6 +44,10 @@ export function ProcessingPipeline({ processors, setProcessors, parameterValues,
         }));
     };
 
+    const handleReorderProcessors = (newProcessors: ProcessorInstance[]) => {
+        setProcessors(newProcessors);
+    };
+
     return (
         <PipelineContext
             value={{
@@ -55,7 +59,7 @@ export function ProcessingPipeline({ processors, setProcessors, parameterValues,
             <div className={`border-2 border-border h-full lg:max-h-180 ${className ?? ""}`}>
                 <ProcessingPipelineHeader onAddClick={() => setIsModalOpen(true)} />
                 <div className="">
-                    <ProcessorList className="m-4" processors={processors} />
+                    <ProcessorList className="m-4" processors={processors} onReorder={handleReorderProcessors} />
                     <AddProcessorModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSubmit={handleAddProcessor} />
                 </div>
             </div>

@@ -1,19 +1,31 @@
 import { useState } from "react";
+import { useSortable } from "@dnd-kit/react/sortable";
 import type { ProcessorInstance } from "../../models/processor-instance.model";
 import { ParameterItem } from "./ParameterItem";
 import { usePipelineContext } from "../../contexts/pipeline.context";
 
 type Props = {
     processor: ProcessorInstance;
+    index: number;
 };
 
-export function ProcessorItem({ processor }: Props) {
+export function ProcessorItem({ processor, index }: Props) {
     const [expanded, setExpanded] = useState(false);
     const { onDeleteProcessor, onUpdateParameterValue, parameterValues } = usePipelineContext();
+    const { ref, handleRef, isDragging } = useSortable({
+        id: processor.id,
+        index,
+    });
 
     return (
-        <div className="flex gap-2">
-            <div className="w-full bg-surface-secondary rounded mb-2">
+        <div ref={ref} data-dragging={isDragging || undefined} className="flex gap-2 mb-2">
+            <div
+                ref={handleRef}
+                className="bg-surface-secondary rounded flex p-2 h-fit cursor-grab text-text-secondary"
+            >
+                ⋮⋮
+            </div>
+            <div className="w-full bg-surface-secondary rounded">
                 <button onClick={() => setExpanded(!expanded)} className="w-full hover:bg-surface-secondary-hover rounded flex items-center gap-2 px-4 py-2">
                     <span className={`transition-transform ${expanded ? "rotate-90" : ""}`}>▶</span>
                     <span>{processor.displayName}</span>
@@ -31,7 +43,7 @@ export function ProcessorItem({ processor }: Props) {
                     </div>
                 )}
             </div>
-            <div className="bg-danger max-h-fit hover:bg-danger-hover rounded mb-2 text-text">
+            <div className="bg-danger h-fit hover:bg-danger-hover rounded text-text">
                 <button className="w-full items-center px-4 py-2" onClick={() => onDeleteProcessor(processor.id)}>
                     Delete
                 </button>
