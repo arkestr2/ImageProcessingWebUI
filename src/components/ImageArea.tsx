@@ -53,17 +53,36 @@ export function ImageArea({ className, imageId, onImageUpload, resultImageId }: 
         },
     });
 
+    const handleDownload = () => {
+        if (!resultPreview) return;
+        const link = document.createElement("a");
+        link.href = resultPreview;
+        link.download = `result-${resultImageId ?? "image"}.png`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     return (
         <div className={`flex flex-col gap-4 ${className ?? ""}`}>
-            <div className="w-full aspect-video bg-surface-secondary hover:bg-surface-secondary-hover flex items-center justify-center">
-                <div {...getRootProps()} className="h-full w-full flex items-center justify-center">
-                    <input {...getInputProps()} />
-                    {preview ? <img src={preview} alt="Preview" /> : <p>Drag & drop or click to select an input image</p>}
-                </div>
+            <div {...getRootProps()} className="border-2 border-border w-128 h-72 flex items-center justify-center">
+                <input {...getInputProps()} />
+                {preview ? <img src={preview} alt="Preview" className="object-contain h-full w-full" /> : <p>Drag & drop or click to select an input image</p>}
             </div>
-            <div className="w-full aspect-video bg-surface-secondary flex items-center justify-center">
+
+            <div className="relative border-2 border-border w-128 h-72 flex items-center justify-center">
                 {resultPreview ? (
-                    <img src={resultPreview} alt="Processed" className="max-h-full" />
+                    <>
+                        <img src={resultPreview} alt="Processed" className="object-contain h-full w-full" />
+                        <button
+                            type="button"
+                            onClick={handleDownload}
+                            className="absolute top-2 right-2 px-3 py-1.5 rounded-md bg-black/60 text-white text-sm
+                                       transition-opacity duration-200 cursor-pointer "
+                        >
+                            Download
+                        </button>
+                    </>
                 ) : isUploading ? (
                     <p>Uploading...</p>
                 ) : error ? (
