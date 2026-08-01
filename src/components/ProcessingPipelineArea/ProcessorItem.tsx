@@ -36,7 +36,7 @@ export function ProcessorItem({ processor, index }: Props) {
                     </button>
                 </button>
                 {expanded && (
-                    <div className="px-8 pb-2">
+                    <div className="pl-8 pr-4 py-2">
                         {processor.parameters.map((param) => (
                             <ParameterItem
                                 key={param.displayName}
