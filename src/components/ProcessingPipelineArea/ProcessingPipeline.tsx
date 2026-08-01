@@ -56,7 +56,7 @@ export function ProcessingPipeline({ processors, setProcessors, parameterValues,
                 parameterValues: parameterValues,
             }}
         >
-            <div className={`card-big overflow-hidden ${className ?? ""}`}>
+            <div className={`card-big ${className ?? ""}`}>
                 <ProcessingPipelineHeader onAddClick={() => setIsModalOpen(true)} />
                 <div>
                     <ProcessorList className="m-4" processors={processors} onReorder={handleReorderProcessors} />
