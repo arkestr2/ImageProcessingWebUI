@@ -16,7 +16,7 @@ export function ProcessorList({ processors, onReorder, className }: Props) {
     const containerRef = useRef<HTMLDivElement>(null);
 
     return (
-        <div ref={containerRef} className={`overflow-y-auto lg:h-150 ${className ?? ""}`}>
+        <div ref={containerRef} className={`overflow-y-auto ${className ?? ""}`}>
             <DragDropProvider
                 modifiers={[
                     RestrictToVerticalAxis,

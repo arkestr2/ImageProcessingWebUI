@@ -4,8 +4,8 @@ type Props = {
 
 export function Header({ className }: Props) {
     return (
-        <div className={`bg-surface font-bold flex items-center ${className ?? ""}`}>
-            <h1 className="pl-4 text-text">ImageProcessingUI</h1>
+        <div className={`bg-grey-700 font-bold flex items-center border-container border-x-0 border-t-0 p-4 ${className ?? ""}`}>
+            <h1>ImageProcessingUI</h1>
         </div>
     );
 }

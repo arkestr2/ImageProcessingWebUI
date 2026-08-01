@@ -16,7 +16,7 @@ export function Footer({ processors, imageId, onProcess, isProcessing, className
             <button
                 onClick={onProcess}
                 disabled={disabled}
-                className="h-fit w-fit p-4 bg-primary rounded hover:bg-primary-hover text-text disabled:opacity-50 disabled:cursor-not-allowed"
+                className="button-main disabled:opacity-50 disabled:cursor-not-allowed w-full"
             >
                 {isProcessing ? "Processing..." : "Process"}
             </button>

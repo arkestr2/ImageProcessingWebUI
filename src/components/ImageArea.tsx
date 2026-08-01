@@ -64,34 +64,35 @@ export function ImageArea({ className, imageId, onImageUpload, resultImageId }: 
     };
 
     return (
-        <div className={`flex flex-col gap-4 ${className ?? ""}`}>
-            <div {...getRootProps()} className="border-2 border-border w-128 h-72 flex items-center justify-center">
-                <input {...getInputProps()} />
-                {preview ? <img src={preview} alt="Preview" className="object-contain h-full w-full" /> : <p>Drag & drop or click to select an input image</p>}
+        <div className={`flex flex-col gap-4 h-full ${className ?? ""}`}>
+            <div className="card-big p-4 bg-grey-700 flex flex-col gap-2">
+                <h3 className="flex items-center">Input Image</h3>
+                <div {...getRootProps()} className="card-image cursor-pointer hover:bg-grey-500">
+                    <input {...getInputProps()} />
+                    {preview ? <img src={preview} alt="Preview" className="object-contain h-full w-full" /> : <p>Drag & drop or click to select an input image</p>}
+                </div>
             </div>
 
-            <div className="relative border-2 border-border w-128 h-72 flex items-center justify-center">
-                {resultPreview ? (
-                    <>
+            <div className="card-big p-4 bg-grey-700 flex flex-col gap-2">
+                <div className="flex items-center justify-between">
+                    <h1>Output Image</h1>
+                    <div>
+                        <button className="button-main" onClick={handleDownload}>Download</button>
+                    </div>
+                </div>
+                <div className="card-image">
+                    {resultPreview ? (
                         <img src={resultPreview} alt="Processed" className="object-contain h-full w-full" />
-                        <button
-                            type="button"
-                            onClick={handleDownload}
-                            className="absolute top-2 right-2 px-3 py-1.5 rounded-md bg-black/60 text-white text-sm
-                                       transition-opacity duration-200 cursor-pointer "
-                        >
-                            Download
-                        </button>
-                    </>
-                ) : isUploading ? (
-                    <p>Uploading...</p>
-                ) : error ? (
-                    <p className="text-danger">{error}</p>
-                ) : imageId ? (
-                    <p>Image ready for processing</p>
-                ) : (
-                    <p>Output image</p>
-                )}
+                    ) : isUploading ? (
+                        <p>Uploading...</p>
+                    ) : error ? (
+                        <p className="text-danger">{error}</p>
+                    ) : imageId ? (
+                        <p>Image ready for processing</p>
+                    ) : (
+                        <p>Output image</p>
+                    )}
+                </div>
             </div>
         </div>
     );

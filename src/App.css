@@ -1,19 +1,93 @@
 @import "tailwindcss";
 
 @theme {
-    --color-primary: #0A9396;
-    --color-primary-hover: #045770;
-    --color-secondary: #CBC8C2;
-    --color-secondary-hover: #EBE9E0;
-    --color-bg: #FFFCF0;
-    --color-surface: #727372;
-    --color-surface-hover: #FFFCF0;
-    --color-surface-secondary: #CBC8C2;
-    --color-surface-secondary-hover: #EBE9E0;
-    --color-border: #727372;
-    --color-text: #FFFCF0;
-    --color-text-secondary: #727372;
-    --color-text-muted: #005F73;
-    --color-danger: #BE2012;
-    --color-danger-hover: #8B2226;
+    --color-*: initial;
+
+    --color-primary: oklch(54.78% 0.0777 195.12);
+    --color-primary-hover: oklch(50% 0.101 197.4);
+
+    --color-text: oklch(90% 0 0);
+    --color-text-muted: oklch(80% 0 0);
+
+    --color-danger: #c0403f;
+    --color-danger-hover: oklch(40% 0.1937 30.01);
+
+    --color-grey-800: oklch(26.03% 0 0);
+    --color-grey-700: oklch(32.11% 0 0);
+    --color-grey-600: oklch(42.02% 0 0);
+    --color-grey-500: oklch(47.84% 0 0);
+    --color-grey-400: oklch(68.62% 0 0);
+}
+
+@layer base {
+  body {
+    color: var(--color-text);
+  }
+}
+
+@utility card {
+    @apply border-container;
+}
+
+@utility card-big {
+    @apply card;
+    border-radius: var(--radius-2xl);
+    background-color: var(--color-grey-700);
+}
+
+@utility card-small {
+    @apply card;
+    border-radius: var(--radius-lg);
+    background-color: var(--color-grey-600);
+}
+
+@utility card-image {
+    @apply card-small;
+    position: relative;
+    width: calc(var(--spacing) * 128);
+    height: calc(var(--spacing) * 72);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@utility button {
+    border-radius: var(--radius-lg);
+    padding-block: calc(var(--spacing) * 2);
+    padding-inline: calc(var(--spacing) * 4);
+    height: fit-content;
+    cursor: pointer;
+
+    &:disabled {
+        opacity: 50%;
+        cursor: not-allowed;
+    }
+}
+
+@utility button-main {
+    @apply button;
+    background-color: var(--color-primary);
+
+    &:hover {
+        @media (hover: hover) {
+            background-color: var(--color-primary-hover);
+        }
+    }
+}
+
+@utility button-danger {
+    @apply button;
+    background-color: var(--color-danger);
+
+    &:hover {
+        @media (hover: hover) {
+            background-color: var(--color-danger-hover);
+        }
+    }
+}
+
+@utility border-container {
+    border-width: 1px;
+    border-color: var(--color-grey-500);
+    border-style: solid;
 }

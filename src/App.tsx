@@ -46,22 +46,17 @@ export function App() {
     }, [imageId]);
 
     return (
-        <div className="w-screen h-screen flex flex-col items-center bg-bg">
-            <Header className="min-h-15 w-full" />
+        <div className="w-full h-screen flex flex-col items-center bg-grey-800">
+            <Header className="h-15 w-full" />
             <div
                 className="
+                    m-8
                     flex-1
+                    h-full
                     grid
-                    grid-cols-1
-                    grid-rows-[auto_auto_auto]
-                    lg:grid-cols-[1fr_2fr]
-                    lg:grid-rows-[11fr_1fr]
-                    gap-4 py-8
-                    px-8
-                    lg:px-0
-                    w-full
-                    max-w-5xl
-                    bg-bg
+                    grid-cols-[1fr_1fr]
+                    grid-rows-[auto_1fr]
+                    gap-8
                 "
             >
                 <ImageArea imageId={imageId} onImageUpload={setImageId} resultImageId={resultImageId} />
@@ -70,13 +65,14 @@ export function App() {
                     setProcessors={setProcessors}
                     parameterValues={parameterValues}
                     setParameterValues={setParameterValues}
+                    className="h-full"
                 />
                 <Footer
                     processors={processors}
                     imageId={imageId}
                     onProcess={onProcess}
                     isProcessing={isProcessing}
-                    className="lg:col-span-2 justify-end"
+                    className="col-span-2 justify-end"
                 />
             </div>
         </div>

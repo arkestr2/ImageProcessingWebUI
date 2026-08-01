@@ -5,13 +5,10 @@ type Props = {
 
 export function ProcessingPipelineHeader({ className, onAddClick }: Props) {
     return (
-        <div className={`bg-surface flex justify-between text-text py-4 ${className ?? ""}`}>
-            <h1 className="pl-4 text-text font-bold">Processing Pipeline</h1>
-            <div className="pr-4">
-                <button
-                    onClick={onAddClick}
-                    className="w-fit h-8 rounded bg-secondary hover:bg-secondary-hover flex items-center justify-center text-surface px-4"
-                >
+        <div className={`flex items-center justify-between pt-4 px-4 ${className ?? ""}`}>
+            <h1 className="font-bold">Processing Pipeline</h1>
+            <div>
+                <button onClick={onAddClick} className="button-main">
                     Add Processor
                 </button>
             </div>
