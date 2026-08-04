@@ -66,7 +66,7 @@ export function ImageArea({ className, imageId, onImageUpload, resultImageId }: 
     return (
         <div className={`flex flex-col gap-4 h-full ${className ?? ""}`}>
             <div className="card-big p-4 bg-grey-700 flex flex-col gap-2">
-                <h3 className="flex items-center">Input Image</h3>
+                <h3 className="flex items-center font-bold">Input Image</h3>
                 <div {...getRootProps()} className="card-image cursor-pointer hover:bg-grey-500">
                     <input {...getInputProps()} />
                     {preview ? <img src={preview} alt="Preview" className="object-contain h-full w-full" /> : <p>Drag & drop or click to select an input image</p>}
@@ -75,7 +75,7 @@ export function ImageArea({ className, imageId, onImageUpload, resultImageId }: 
 
             <div className="card-big p-4 bg-grey-700 flex flex-col gap-2">
                 <div className="flex items-center justify-between">
-                    <h1>Output Image</h1>
+                    <h1 className="font-bold">Output Image</h1>
                     <div>
                         <button className="button-main" onClick={handleDownload}>Download</button>
                     </div>

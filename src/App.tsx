@@ -56,7 +56,7 @@ export function App() {
                     grid
                     grid-cols-[1fr_1fr]
                     grid-rows-[auto_1fr]
-                    gap-8
+                    gap-4
                 "
             >
                 <ImageArea imageId={imageId} onImageUpload={setImageId} resultImageId={resultImageId} />
